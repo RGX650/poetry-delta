@@ -4,7 +4,7 @@
 # Hadolint ignores:
 #   DL3042: Avoid use of cache directory with pip
 
-FROM python:3.12-slim
+FROM python:3.10.11-slim
 
 #
 # Set the RUN shell to bash, and set pipefail
@@ -41,7 +41,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=cache,target=/root/.cache/pypoetry \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     --mount=type=bind,source=poetry.lock,target=poetry.lock \
-    pip install poetry==1.7.0 \
+    pip install poetry==1.7.1 \
  && poetry config virtualenvs.create false \
  && poetry export --format=requirements.txt \
                   --without-hashes \
